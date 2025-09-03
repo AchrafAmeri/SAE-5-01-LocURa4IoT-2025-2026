@@ -1,0 +1,44 @@
+:toc: macro
+
+= Documentation Technique SAE-LocURa4IoT
+
+=== Sommaire
+toc::[]
+
+
+== Equipe 2024-2025
+
+Groupe :
+
+- GUILLUY Matt
+- AMERI Mohammed
+- RAZAFINIRINA Mialisoa
+- TRAN David
+- DUCRY Pierre-louis
+
+== Présentation du projet
+
+===  *Contexte Générale*
+
+Client : IRIT
+Objectif : Sujet autour de la réalité virtuelle pour l'accès àdistance de la plateforme LocURa4IoT.
+Un modèle 3D a été développé l'année dernière par un graphiste
+sous Unity. L'idée du projet serait de faire évoluer le modèle 3D pour permettre l'ajout d'objets dynamiquement dans l'environnement.
+C'est aujourd'hui faisable, mais il faut rentrer dans le code et
+recompiler...
+L’objectif du projet serait donc de
+développer une API.
+Technologie : Unity
+
+=== Objectif du Projet 
+
+=== Technologies Utilisées 
+
+==  Cas d'Utilisation 
+
+== Diagrammes des cas d'utilisation
+
+== Diagrammes des classes 
+
+== Fonctionnalités
+
