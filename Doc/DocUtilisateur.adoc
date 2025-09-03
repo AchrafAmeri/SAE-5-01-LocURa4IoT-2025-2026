@@ -1,0 +1,41 @@
+:toc-title: Sommaire
+:toc: macro
+:toclevels: 3
+
+= Documentation Utilisateur
+
+:sectnums:
+toc::[Sommaire]
+
+== Présentation Application
+
+===  *Contexte Général*
+
+****
+Nom du projet : Locur4Iot
+
+****
+
+=== *Sujet et Présentation*
+
+****
+Sujet autour de la réalité virtuelle pour l'accès à
+distance de la plateforme LocURa4IoT. Un modèle 3D a été développé
+l'année dernière par un graphiste sous Unity. L'idée du projet serait de
+faire évoluer le modèle 3D pour permettre l'ajout d'objets dynamiquement
+dans l'environnement. C'est aujourd'hui faisable, mais il faut rentrer
+dans le code et recompiler... 
+L'idée du projet serait donc de
+développer une API.
+
+****
+
+=== Installation
+
+****
+Pré-requis : 
+
+****
+
+== Fonctionnalités
+
