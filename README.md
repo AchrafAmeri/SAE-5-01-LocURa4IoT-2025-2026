@@ -2,17 +2,17 @@
 <a id="readme-top"></a>
 
 
+
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/MASTTTTT/SAE-5-01-LocURa4IoT-2025-2026.git">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+          
   </a>
 
 <h3 align="center">LocURa4IoT</h3>
 
   <p align="center">
-    project_description
     <br />
     <a href="https://github.com/MASTTTTT/SAE-5-01-LocURa4IoT-2025-2026.git"><strong>Explorez la documentation »</strong></a>
     <br />
@@ -54,6 +54,7 @@
 <!-- ABOUT THE PROJECT -->
 ## A Propos du projet
 
+LocURa4IoT est une plateforme permettant l’étude de la localisation des objets connectés par les protocoles de communication sans fil, l’analyse de performances des protocoles de ranging (mesure de distance) et de localisation, l’étude et l’analyse des performances des protocoles de synchronisation fine (à la nanoseconde) sur un réseau sans fil. La plateforme permet également l’étude et l’analyse des performances des algorithmes de localisation, ainsi que l’exploitation de la donnée de localisation, et la localisation sémantique. La plateforme est aussi bien utilisable à distance, automatiquement via des scénarios programmés et automatiquement déroulés, que localement, sur place, afin d’impliquer des utilisateurs en personne dans des scénarios d’usage.
 
 
 
@@ -61,7 +62,44 @@
 
 
 
-## Technologies
+## Technologies 
+
+Le projet LocURa4IoT de l’IRIT repose principalement sur des technologies de communication sans fil dédiées à la localisation d’objets connectés. Les composants essentiels incluent l’Ultra Wide Band (UWB), le Bluetooth Low Energy (BLE), LoRa/LoRaWAN et le NFC, intégrés avec des protocoles avancés de synchronisation, de ranging (mesure de distance), et des architectures réseau centrées autour d’un broker MQTT.
+
+### Protocoles et technologies sans fil
+
+- **UWB (Ultra Wide Band)**
+  - Mesure du temps de vol radio (Time of Flight)
+  - Angle d'arrivée (Angle of Arrival)
+  - Précision de localisation jusqu'à ±2 cm
+- **BLE (Bluetooth Low Energy)**
+  - Localisation opportuniste dans des environnements variés
+- **LoRa / LoRaWAN**
+  - Expérimentation sur réseaux longue portée et hétérogénéité IoT
+- **NFC**
+  - Applications de proximité
+
+### Protocoles, architecture et outils
+
+- **Protocoles de ranging** (mesure de distance) et de localisation
+- **Synchronisation fine**
+  - Précision jusqu’à 100 nanosecondes
+- **Protocoles MAC** (Medium Access Control) et réseaux avancés
+- **Automatisation/reproductibilité** des expériences (scripts Python, accès distant)
+- **Broker MQTT** (Message Queuing Telemetry Transport)
+  - Contrôle, collecte et automatisation des échanges de données
+
+### Infrastructure de la plateforme
+
+- 64 objets connectés UWB (Qorvo DWM1001-dev), entièrement reprogrammables
+- 40 contrôleurs testbed sur réseau Ethernet
+- Rail mobile de 7 mètres pour les tests de mobilité
+- Déploiement sur trois environnements physiques :
+  - Bureaux
+  - Appartement intelligent (Maison Intelligente de Blagnac)
+  - Chambre anéchoïque
+---
+Plateforme opérée par l’équipe RMESS de l’IRIT, Université Toulouse/Jean Jaurès et IUT de Blagnac
 
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
@@ -76,6 +114,7 @@
 
 
 ### Installation
+
 
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
