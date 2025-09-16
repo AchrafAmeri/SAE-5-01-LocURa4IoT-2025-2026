@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6703280216228563721
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4362091538561635297}
+  - component: {fileID: 8284307113868846457}
+  - component: {fileID: 8827626683966171160}
+  m_Layer: 0
+  m_Name: Nodes
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 1
+  m_IsActive: 1
+--- !u!4 &4362091538561635297
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703280216228563721}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8284307113868846457
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703280216228563721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fdae82f162167734fae062d065be5361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MobileNodePrefab: {fileID: 6947111239845322671, guid: 2356ee9ecc495484db3f160d3fb6bab1, type: 3}
+  NodePrefab: {fileID: 957732568790890043, guid: c20f147c5ed6e5b4895cd159419909a2, type: 3}
+  CanvaPrefab: {fileID: 2345764769715582498, guid: 038ddd4b05390b94a9d74aa448f5bf05, type: 3}
+  EstimatedNodePrefab: {fileID: 957732568790890043, guid: 1e1cdd1c961b98a43b47ada5fc47cf6d, type: 3}
+  EstimatedParent: {fileID: 0}
+  lineEstimationPrefab: {fileID: 4819637944027621682, guid: 33b0fc92cf9cfef4db8653ddb3203bd0, type: 3}
+  lineCommunicationPrefab: {fileID: 7293276569012909991, guid: 814263b52d848a24888e88112921e995, type: 3}
+  lineErrorPrefab: {fileID: 2141571512715989166, guid: 738b6050f91241c4bb3c0416e082c53a, type: 3}
+  lineParent: {fileID: 0}
+  MqttManager: {fileID: 0}
+  TopicList: {fileID: 0}
+--- !u!114 &8827626683966171160
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6703280216228563721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 791009cc5e63e9648af82207d75a94c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  "ErreurNodeR\xE9el": 1
