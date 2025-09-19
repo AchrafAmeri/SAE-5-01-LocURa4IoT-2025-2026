@@ -149,10 +149,13 @@ Représentation des mesures de ranging : Deux types de représentation sont disp
 [nom_lien](lien)_
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
+
+
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Réaliser l'UI pour l'ajout d
+
+- [ ] Réaliser l'UI pour l'ajout dynamique
 
 Afin d'avoir toutes les features et les [issues](https://github.com/MASTTTTT/SAE-5-01-LocURa4IoT-2025-2026/issues).
 
