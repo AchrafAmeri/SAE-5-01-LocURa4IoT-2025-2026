@@ -109,38 +109,52 @@ Plateforme opérée par l’équipe RMESS de l’IRIT, Université Toulouse/Jean
 <!-- GETTING STARTED -->
 ## Demarrage
 
+IRIT Lab VR est une application de réalité virtuelle qui permet de visualiser les résultats d'expériences menées sur la plateforme LocURa4IoT de l'IRIT. Elle affiche les estimations de position et les mesures de ranging en récupérant les informations publiées sur le réseau MQTT. L'application a été développée avec le moteur de jeu Unity pour les casques MetaQuest.
 
 ### Prerequis
 
+L'application est faite pour tourner sur les casques MetaQuest. Ce sont des casques autonomes, ne nécessitant pas d'ordinateur pour fonctionner, ce qui rend l'expérience portable.
 
 ### Installation
 
+Le logiciel se présente sous la forme d'un fichier .apk.
 
+Pour l'installer dans votre casque :
+
+- Branchez le casque à votre PC.
+
+- Ouvrez l'application 
+
+- Meta Quest Developer Hub (votre casque doit être en mode développeur).
+
+Dans l'onglet 
+
+- Device Manager, cliquez sur Add Build et ajoutez le fichier .apk.
+
+- Le logiciel sera disponible dans la bibliothèque du casque MetaQuest 3, dans le dossier Unknown Sources
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
-
-
 
 <!-- USAGE EXAMPLES -->
 ## Usage
 
+Contrôle du rail : Il est possible de piloter le rail de sept mètres de la plateforme en publiant des requêtes MQTT depuis l'application. La position du chariot se met à jour en temps réel sur la tablette virtuelle et dans la scène 3D.
 
+
+Affichage des positions des nodes : Les positions réelles et estimées des nodes sont affichées de manière dynamique. Les nodes non connectés sont représentés par des cubes gris, ceux qui sont connectés par des cubes bleu clair, et les positions estimées par des cubes rouges.
+
+État des portes : L'application récupère l'état (ouvert/fermé) des portes via des capteurs, ce qui permet de visualiser leur état en temps réel, car cela peut influencer les mesures.
+
+Représentation des mesures de ranging : Deux types de représentation sont disponibles. Les mesures peuvent être affichées sous forme de lignes droites entre les nodes et les ancres, ou sous forme de sphères dont le centre est l'ancre et le rayon est la distance mesurée.
 [nom_lien](lien)_
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
-
-
-
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature principale 1
-- [ ] Feature principale 2
-- [ ] Feature principale 3
+- [ ] Réaliser l'UI pour l'ajout d
 
-
-Cliquez sur ce [nom_lien](lien)
-afin d'avoir toutes les features et les issues.
+Afin d'avoir toutes les features et les [issues](https://github.com/MASTTTTT/SAE-5-01-LocURa4IoT-2025-2026/issues).
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
 
