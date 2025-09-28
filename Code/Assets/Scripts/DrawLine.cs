@@ -56,7 +56,7 @@ public class DrawLine : MonoBehaviour
         lineCommunication.SetPosition(1, errorRangingPoint);
     }
 
-    private Vector3 RangingErrorPoint (GameObject A, GameObject R, float d,  float r)
+    private Vector3 RangingErrorPoint (GameObject A, GameObject D, float d,  float r)
     {
         float t;
         Vector3 E = new Vector3();
@@ -64,9 +64,9 @@ public class DrawLine : MonoBehaviour
         float yA = A.transform.position.y;
         float zA = A.transform.position.z;
 
-        float xR = R.transform.position.x;
-        float yR = R.transform.position.y;
-        float zR = R.transform.position.z;
+        float xR = D.transform.position.x;
+        float yR = D.transform.position.y;
+        float zR = D.transform.position.z;
 
         t = ((d * r)
             /(Mathf.Pow(xR-xA,2) + Mathf.Pow(yR - yA, 2) + Mathf.Pow(zR - zA, 2)));

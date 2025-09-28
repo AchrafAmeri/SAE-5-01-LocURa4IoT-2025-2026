@@ -22,7 +22,6 @@ public class SetEstimatedNodePosition : MonoBehaviour
 {
 
     public string node_id;
-    [SerializeField] MQTT mqttManager;
     private GameObject Node;
     private Transform ParentNode;
     private GameObject realNode = null;
@@ -185,9 +184,8 @@ public class SetEstimatedNodePosition : MonoBehaviour
             }
         }
     }
-    public void SetupMQTT(MQTT mqtt, TopicSubscribeHandling Handler, Transform Parent, LineRenderer Estimation, LineRenderer Communication, Transform lineParent, Transform communicationParent, Material Connected)
+    public void SetupMQTT(TopicSubscribeHandling Handler, Transform Parent, LineRenderer Estimation, LineRenderer Communication, Transform lineParent, Transform communicationParent, Material Connected)
     {
-        mqttManager = mqtt;
         MessageDetection = Handler;
         Node = gameObject;
         realNodeMat = Connected;
