@@ -10,7 +10,7 @@
           
   </a>
 
-<h3 align="center">LocURa4IoT</h3>
+<h1 align="center">LocURa4IoT</h1>
 
   <p align="center">
     <br />
