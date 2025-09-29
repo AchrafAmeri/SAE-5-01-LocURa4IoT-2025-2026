@@ -194,11 +194,11 @@ Afin d'avoir toutes les features et les [issues](https://github.com/MASTTTTT/SAE
 
 
 <!-- Sources -->
-## Sources
+<!-- ## Sources
 
 * []()
 * []()
-* []()
+* []() -->
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
 
