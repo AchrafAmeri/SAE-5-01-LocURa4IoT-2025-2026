@@ -14,7 +14,7 @@
 
   <p align="center">
     <br />
-    <a href="https://github.com/MASTTTTT/SAE-5-01-LocURa4IoT-2025-2026.git"><strong>Explorez la documentation »</strong></a>
+    <a href="https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/tree/main/Doc"><strong>Explorez la documentation »</strong></a>
     <br />
     <br />
     <a href="https://github.com/github_username/repo_name">Demo</a>
