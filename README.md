@@ -167,14 +167,14 @@ Représentation des mesures de ranging : Deux types de représentation sont disp
 
 
 <!-- ROADMAP -->
-## Roadmap
+<!-- ## Roadmap
 
 
 - [ ] Réaliser l'UI pour l'ajout dynamique
 
 Afin d'avoir toutes les features et les [issues](https://github.com/MASTTTTT/SAE-5-01-LocURa4IoT-2025-2026/issues).
 
-<p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
+<p align="right">(<a href="#readme-top">Aller en haut</a>)</p> -->
 
 ## Livrables attendus – Projet VR Locura4IOT
 
