@@ -52,6 +52,16 @@ https://www.swisstransfer.com/d/8db686fe-6a49-4744-8099-572cc8e57520
 
 
 <!-- ABOUT THE PROJECT -->
+## L'équipe de developpement
+## Équipe / Contributeurs
+
+- [David TRAN](https://github.com/DavidTRANMinhAnh) — Product Owner  
+- [Pierre-Louis DUCRY](https://github.com/Ducry-PL) — Scrum Master  
+- [Mialisoa RAZAFINIRINA](https://github.com/Mialiso) — Développeuse  
+- [Mohammed AMERI](https://github.com/AchrafAmeri/) — Développeur  
+- [Matt GUILLUY](https://github.com/MASTTTTT) — Abandon  
+
+
 ## A Propos du projet
 
 LocURa4IoT est une plateforme permettant l’étude de la localisation des objets connectés par les protocoles de communication sans fil, l’analyse de performances des protocoles de ranging (mesure de distance) et de localisation, l’étude et l’analyse des performances des protocoles de synchronisation fine (à la nanoseconde) sur un réseau sans fil. La plateforme permet également l’étude et l’analyse des performances des algorithmes de localisation, ainsi que l’exploitation de la donnée de localisation, et la localisation sémantique. La plateforme est aussi bien utilisable à distance, automatiquement via des scénarios programmés et automatiquement déroulés, que localement, sur place, afin d’impliquer des utilisateurs en personne dans des scénarios d’usage.
