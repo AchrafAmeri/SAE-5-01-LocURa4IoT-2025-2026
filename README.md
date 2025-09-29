@@ -53,7 +53,6 @@
 
 <!-- ABOUT THE PROJECT -->
 ## L'équipe de developpement
-## Équipe / Contributeurs
 
 - [David TRAN](https://github.com/DavidTRANMinhAnh) — Product Owner  
 - [Pierre-Louis DUCRY](https://github.com/Ducry-PL) — Scrum Master  
@@ -171,7 +170,21 @@ Afin d'avoir toutes les features et les [issues](https://github.com/MASTTTTT/SAE
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
 
+## Livrables attendus – Projet VR Locura4IOT
 
+| Catégorie | Livrable | Description / Contenu attendu |
+|-----------|----------|--------------------------------|
+| **Suivi du projet** | Backlog produit | Liste priorisée des fonctionnalités (user stories, critères d’acceptation). |
+| | Backlog sprint | Planification des sprints, tâches sélectionnées, estimation des efforts. |
+| | Comptes-rendus (CR) de réunion | Synthèse des décisions, actions, points bloquants, prochaines étapes. |
+| | Board du projet | Kanban ou Scrum board pour visualiser l’avancement. |
+| **Analyse & conception** | Document d'analyse | Étude du besoin, contraintes, cas d’utilisation, scénarios utilisateurs. |
+| | Document de conception | Architecture logicielle, diagrammes (UML, séquence, composants), choix techniques. |
+| **Développement** | Code documenté | Code source complet, structuré, commenté et conforme aux bonnes pratiques. |
+| **Tests** | Cahier de tests | Jeux d’essais, procédures de tests unitaires et fonctionnels, résultats attendus. |
+| | Cahier de recette | Tests de validation, critères d’acceptation avant livraison. |
+| **Livraison & clôture** | Revue finale du projet | Présentation de la version finale, bilan des objectifs atteints, retours d’expérience. |
+| | Guide d'utilisation | Manuel d’installation, configuration et utilisation de l’application. |
 
 
 <!-- Sources -->
