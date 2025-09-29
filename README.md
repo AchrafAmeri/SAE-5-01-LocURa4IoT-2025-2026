@@ -155,7 +155,7 @@ Affichage des positions des nodes : Les positions réelles et estimées des node
 État des portes : L'application récupère l'état (ouvert/fermé) des portes via des capteurs, ce qui permet de visualiser leur état en temps réel, car cela peut influencer les mesures.
 
 Représentation des mesures de ranging : Deux types de représentation sont disponibles. Les mesures peuvent être affichées sous forme de lignes droites entre les nodes et les ancres, ou sous forme de sphères dont le centre est l'ancre et le rayon est la distance mesurée.
-[nom_lien](lien)_
+
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
 
