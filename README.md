@@ -116,6 +116,12 @@ Plateforme opérée par l’équipe RMESS de l’IRIT, Université Toulouse/Jean
 
 
 <!-- GETTING STARTED -->
+## Documentation
+- [Recueil de besoin](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/Recueil%20de%20besoin.pdf)  
+- [Doc utilisateur](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocUtilisateur.adoc)  
+- [Doc technique](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocTechnique.adoc)  
+- [Documentation IRIT Lab VR](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Documentation%20IRIT%20Lab%20VR.pdf)  
+
 ## Demarrage
 
 IRIT Lab VR est une application de réalité virtuelle qui permet de visualiser les résultats d'expériences menées sur la plateforme LocURa4IoT de l'IRIT. Elle affiche les estimations de position et les mesures de ranging en récupérant les informations publiées sur le réseau MQTT. L'application a été développée avec le moteur de jeu Unity pour les casques MetaQuest.
