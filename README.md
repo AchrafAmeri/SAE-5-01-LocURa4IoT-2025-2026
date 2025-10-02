@@ -120,7 +120,7 @@ Plateforme opérée par l’équipe RMESS de l’IRIT, Université Toulouse/Jean
 - [Recueil de besoin](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/Recueil%20de%20besoin.pdf)  
 - [Doc utilisateur](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocUtilisateur.adoc)  
 - [Doc technique](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocTechnique.adoc)  
-- [Documentation IRIT Lab VR](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Documentation%20IRIT%20Lab%20VR.pdf)  
+- [Documentation IRIT Lab VR](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/Client/Documentation%20IRIT%20Lab%20VR.pdf)  
 
 ## Demarrage
 
