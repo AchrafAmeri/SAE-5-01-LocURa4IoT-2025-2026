@@ -5,8 +5,7 @@
 === Sommaire
 toc::[]
 
-
-== Equipe 2024-2025
+== Équipe 2024-2025
 
 Groupe :
 
@@ -14,14 +13,14 @@ Groupe :
 - AMERI Mohammed
 - RAZAFINIRINA Mialisoa
 - TRAN David
-- DUCRY Pierre-louis
+- DUCRY Pierre-Louis
 
 == Présentation du projet
 
-===  *Contexte Générale*
+=== Contexte Général
 
 Client : IRIT
-Objectif : Sujet autour de la réalité virtuelle pour l'accès àdistance de la plateforme LocURa4IoT.
+Objectif : Sujet autour de la réalité virtuelle pour l'accès à distance de la plateforme LocURa4IoT.
 Un modèle 3D a été développé l'année dernière par un graphiste
 sous Unity. L'idée du projet serait de faire évoluer le modèle 3D pour permettre l'ajout d'objets dynamiquement dans l'environnement.
 C'est aujourd'hui faisable, mais il faut rentrer dans le code et
@@ -30,15 +29,106 @@ L’objectif du projet serait donc de
 développer une API.
 Technologie : Unity
 
-=== Objectif du Projet 
+=== Objectif du Projet
 
-=== Technologies Utilisées 
+Ajouter dynamiquement des nœuds dans l'environnement virtuel de LocURa4IoT.
 
-==  Cas d'Utilisation 
 
-== Diagrammes des cas d'utilisation
+Le projet *LocURa4IoT VR* permet de visualiser et manipuler en réalité virtuelle des nœuds IoT (fixes, mobiles et estimés) et leurs mesures de ranging. L’application Unity récupère des messages MQTT en temps réel, instancie des objets 3D correspondants et met à jour leur état (position, liens, affichage).
 
-== Diagrammes des classes 
+=== Organisation générale
 
-== Fonctionnalités
+```
+/LocURa4IoT/
+├── Assets/
+│   ├── Animations/
+│   ├── Icons/
+│   ├── Material/
+│   ├── Model/
+│   ├── MRTK-Keyboard-main/
+│   ├── Plugins/
+│   ├── PositionsWristMenu/
+│   ├── Prefab/
+│   ├── Resources/
+│   ├── Scenes/
+│   ├── Scripts/
+│   ├── Settings/
+│   ├── Texture/
+│   ├── XR/
+│   └── XRI/
+├── Packages/
+├── ProjectSettings/
+├── Library/
+├── Logs/
+├── Temp/
+├── obj/
+├── IoT_Lab.sln
+└── apk/
+```
+
+=== Architecture logique
+[cols="1,3"]
+|===
+| Composant | Rôle
+
+| Casque Meta Quest 3 (Android) / PC (Link) | Exécution de l’app Unity (OpenXR), rendu VR et interactions XRI.
+| Application Unity | Scène VR, scripts de gestion des nœuds (`NodeGenerator`, `SetNodePosition`, etc.), UI.
+| SDK XR | OpenXR + XR Interaction Toolkit (+ Meta XR AIO SDK si fonctionnalités avancées).
+| Réseau | Wi‑Fi local ou USB Link ; accès au broker MQTT.
+| Broker MQTT | Transport pub/sub des messages capteurs et commandes (Mosquitto/EMQX/HiveMQ).
+| Dispositifs IoT (ESP32/Arduino/RPi) | Publication des topics de localisation, ranging, état.
+|===
+
+=== Flux principal (séquence)
+. Le dispositif IoT publie sur un topic `localisation/<nodeId>/...` un message JSON avec ses informations.
+. Unity (script MQTT) s’abonne aux topics configurés et met en file les messages reçus (thread-safe).
+. `NodeGenerator` détecte un *node inconnu* et instancie le prefab approprié (fixe/mobile/estimé) + UI.
+. Les scripts `Set*Position` appliquent les mises à jour (position, lignes de communication, sphères de ranging).
+. L’utilisateur visualise et interagit en VR (Quest 3 via Link ou APK standalone).
+
+== Structure du code (extraits)
+
+=== `NodeGenerator`
+*Rôle* : instancie dynamiquement les nœuds (fixes, mobiles, estimés), crée les éléments de ranging et leurs UI.
+
+*Points clés d’implémentation* :
+- **Helpers** : `ExtractNodeName`, `CreateNodeLabel` pour éviter duplication et exceptions.
+- **Instantiate(prefab, parent)** : parentage direct, moins de travail *Transform*.
+- **Caching `GetComponent`** : réduit appels répétés, plus lisible.
+- **Recherche d’ancre** : break dès correspondance ; à terme préférer `Dictionary<nodeId, Transform>` (O(1)).
+- **Threading** : toute instanciation doit rester sur le **main thread**.
+
+=== Exemple de parsing robuste
+[source,csharp]
+----
+private string ExtractNodeName(string topic, string startTag, string endTag) {
+    int start = topic.IndexOf(startTag);
+    if (start == -1) return topic;
+    start += startTag.Length;
+    int end = topic.IndexOf(endTag, start);
+    if (end == -1 || end <= start) return topic.Substring(start);
+    return topic.Substring(start, end - start);
+}
+----
+
+== API interne (Unity)
+
+[cols=\"2,4,2\"]
+|===
+| Classe | Méthode | Effet
+
+| NodeGenerator | CreateNewNode(name) | Instancie un nœud fixe + label + `SetupMQTT`.
+| NodeGenerator | CreateNewMobileNode(name) | Instancie un nœud mobile + label + `SetupMQTT`.
+| NodeGenerator | CreateNewEstimatedNode(name) | Instancie un nœud estimé + label + `SetupMQTT` et lignes.
+| NodeGenerator | CreateNewRanging(topic) | Crée l’empty de ranging, rattache à l’ancre, initialise `Ranging`.
+| SetNodePosition | SetupMQTT(...) | Abonnements + application des positions pour nœuds fixes.
+| SetMobileNodePosition | SetupMQTT(...) | Idem pour mobiles.
+| SetEstimatedNodePosition | SetupMQTT(...) | Idem pour estimés + `LineRenderer` (erreur/communication).
+| Ranging | SetupMQTT(...) | Représentation temps réel du ranging (lignes + sphères).
+|===
+
+
+
+== Tests et validation
+
 
