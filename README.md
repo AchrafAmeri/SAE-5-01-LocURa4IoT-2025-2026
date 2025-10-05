@@ -112,43 +112,14 @@ Plateforme opérée par l’équipe RMESS de l’IRIT, Université Toulouse/Jean
 
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
+ 
 
-
-
-<!-- GETTING STARTED -->
-## Documentation
-- [Recueil de besoin](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/Recueil%20de%20besoin.pdf)  
-- [Doc utilisateur](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocUtilisateur.adoc)  
-- [Doc technique](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocTechnique.adoc)  
-- [Documentation IRIT Lab VR](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/Client/Documentation%20IRIT%20Lab%20VR.pdf)  
 
 ## Demarrage
 
 IRIT Lab VR est une application de réalité virtuelle qui permet de visualiser les résultats d'expériences menées sur la plateforme LocURa4IoT de l'IRIT. Elle affiche les estimations de position et les mesures de ranging en récupérant les informations publiées sur le réseau MQTT. L'application a été développée avec le moteur de jeu Unity pour les casques MetaQuest.
 
-### Prerequis
-
-L'application est faite pour tourner sur les casques MetaQuest. Ce sont des casques autonomes, ne nécessitant pas d'ordinateur pour fonctionner, ce qui rend l'expérience portable.
-
-### Installation
-
-Le logiciel se présente sous la forme d'un fichier .apk.
-
-Pour l'installer dans votre casque :
-
-- Branchez le casque à votre PC.
-
-- Ouvrez l'application 
-
-- Meta Quest Developer Hub (votre casque doit être en mode développeur).
-
-Dans l'onglet 
-
-- Device Manager, cliquez sur Add Build et ajoutez le fichier .apk.
-
-- Le logiciel sera disponible dans la bibliothèque du casque MetaQuest 3, dans le dossier Unknown Sources
-
-<p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
+Pour avoir le guide d'installation [complet]().
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -176,29 +147,30 @@ Afin d'avoir toutes les features et les [issues](https://github.com/MASTTTTT/SAE
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p> -->
 
-## Livrables attendus – Projet VR Locura4IOT
+## Livrables attendus – Projet VR LocURa4IOT
 
 | Catégorie | Livrable | Description / Contenu attendu |
-|-----------|----------|--------------------------------|
-| **Suivi du projet** | Backlog produit | Liste priorisée des fonctionnalités (user stories, critères d’acceptation). |
-| | Backlog sprint | Planification des sprints, tâches sélectionnées, estimation des efforts. |
-| | Comptes-rendus (CR) de réunion | Synthèse des décisions, actions, points bloquants, prochaines étapes. |
-| | Board du projet | Kanban ou Scrum board pour visualiser l’avancement. |
-| **Analyse & conception** | Document d'analyse | Étude du besoin, contraintes, cas d’utilisation, scénarios utilisateurs. |
-| | Document de conception | Architecture logicielle, diagrammes (UML, séquence, composants), choix techniques. |
-| **Développement** | Code documenté | Code source complet, structuré, commenté et conforme aux bonnes pratiques. |
-| **Tests** | Cahier de tests | Jeux d’essais, procédures de tests unitaires et fonctionnels, résultats attendus. |
-| | Cahier de recette | Tests de validation, critères d’acceptation avant livraison. |
-| **Livraison & clôture** | Revue finale du projet | Présentation de la version finale, bilan des objectifs atteints, retours d’expérience. |
-| | Guide d'utilisation | Manuel d’installation, configuration et utilisation de l’application. |
+|-----------|-----------|-------------------------------|
+| **Suivi du projet** | [Backlog produit](https://github.com/users/AchrafAmeri/projects/1) | Liste priorisée des fonctionnalités (user stories, critères d’acceptation). |
+| | [Backlog sprint](https://github.com/users/AchrafAmeri/projects/1) | Planification des sprints, tâches sélectionnées, estimation des efforts. |
+| | [Comptes-rendus (CR) de réunion](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/tree/main/Doc/Réunions) | Synthèse des décisions, actions, points bloquants, prochaines étapes. |
+| **Analyse & conception** | [Recueil de besoin](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/Recueil%20de%20besoin.pdf) | Étude du besoin, contraintes, cas d’utilisation, scénarios utilisateurs. |
+| | [Documentation utilisateur](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocUtilisateur.adoc) | Manuel d’installation, configuration et utilisation de l’application. |
+| | [Documentation technique](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocTechnique.adoc) | Architecture logicielle, diagrammes, API et choix techniques. |
+| **Développement** | [Code documenté](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/tree/main/Assets) | Code source complet, structuré, commenté et conforme aux bonnes pratiques. |
+| **Tests** | [Cahier de tests](URL_VERS_CAHIER_TESTS) | Jeux d’essais, procédures de tests unitaires et fonctionnels, résultats attendus. |
+| | [Cahier de recette](URL_VERS_CAHIER_RECETTE) | Tests de validation, critères d’acceptation avant livraison. |
+| **Livraison & clôture** | [Revue finale du projet](URL_VERS_REVUE_FINALE) | Présentation de la version finale, bilan des objectifs atteints, retours d’expérience. |
+| | [Guide d'utilisation](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/DocUtilisateur.adoc) | Manuel d’installation, configuration et utilisation de l’application. |
 
 
-<!-- Sources -->
-<!-- ## Sources
 
-* []()
-* []()
-* []() -->
+
+
+
+## Sources
+
+* ### [Documentation IRIT Lab VR](https://github.com/AchrafAmeri/SAE-5-01-LocURa4IoT-2025-2026/blob/main/Doc/Client/Documentation%20IRIT%20Lab%20VR.pdf)  
 
 <p align="right">(<a href="#readme-top">Aller en haut</a>)</p>
 
