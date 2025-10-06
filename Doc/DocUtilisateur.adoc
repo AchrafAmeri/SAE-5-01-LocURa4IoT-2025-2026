@@ -59,11 +59,11 @@ Se connecter à son **compte Unity** (gratuit).
 
 . Ouvrir **Unity Hub**  
 
-image::images/UnityHub.png[Unity Hub, width=400, align=center]
+image::images/UnityHub.png[Unity Hub, width=1000, align=center]
 
 . Importer le projet Unity (bouton *Add* en haut à droite)  
 
-image::images/UnityHubAddProject.png[Ajouter un projet Unity, width=400, align=center]
+image::images/UnityHubAddProject.png[Ajouter un projet Unity, width=1000, align=center]
 
 . Ouvrir le projet  
 
@@ -71,7 +71,7 @@ image::images/UnityHubOpenProject.png[Ouvrir un projet Unity, width=400, align=c
 
 . Exemple de projet ouvert  
 
-image::images/UnityHubProjectExemple.png[Projet Unity, width=400, align=center]
+image::images/UnityHubProjectExemple.png[Projet Unity, width=1000, align=center]
 
 == Utilisation
 
@@ -98,4 +98,5 @@ Deux types de représentations sont disponibles :
 
 . **Lignes droites** entre les nœuds et les ancres.  
 . **Sphères** dont le centre correspond à l’ancre et le rayon à la distance mesurée.
+
 
