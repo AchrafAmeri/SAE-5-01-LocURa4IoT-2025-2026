@@ -54,11 +54,11 @@
 <!-- ABOUT THE PROJECT -->
 ## L'équipe de developpement
 
-- [David TRAN](https://github.com/DavidTRANMinhAnh) — Product Owner  
-- [Pierre-Louis DUCRY](https://github.com/Ducry-PL) — Scrum Master  
+- [David TRAN](https://github.com/DavidTRANMinhAnh) — Product Owner / Developper
 - [Mialisoa RAZAFINIRINA](https://github.com/Mialiso) — Développeuse  
-- [Mohammed AMERI](https://github.com/AchrafAmeri/) — Développeur  
-- [Matt GUILLUY](https://github.com/MASTTTTT) — Abandon  
+- [Mohammed AMERI](https://github.com/AchrafAmeri/) — Scrum Master / Développeur  
+- [Matt GUILLUY](https://github.com/MASTTTTT) — Abandon
+- [Pierre-Louis DUCRY](https://github.com/Ducry-PL) — Abandon  
 
 
 ## A Propos du projet
