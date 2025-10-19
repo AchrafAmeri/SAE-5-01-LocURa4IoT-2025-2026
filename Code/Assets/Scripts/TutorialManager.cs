@@ -19,9 +19,8 @@ public class TutorialManager : MonoBehaviour
     private bool hasJumped = false;
     private bool hasRotated = false;
     private bool hasLookedBack = false;
-    private bool hasGrabbed = false;
     private bool tutorialStarted = false;
-    private bool stepReady = false; // Permet de savoir si l’étape actuelle est validée
+    private bool stepReady = false;
 
     private InputAction moveAction;
     private InputAction jumpAction;
@@ -33,10 +32,13 @@ public class TutorialManager : MonoBehaviour
     private int jumpCount;
 
     private Vector3 imageStartPos = new Vector3(-6f, 210f, -888f);
-    private Vector3 imageEndPos = new Vector3(-6f, 243f, 403f);
+
+    private TabletTutorialManager tabletTutorial;
 
     void Start()
     {
+        tabletTutorial = FindObjectOfType<TabletTutorialManager>();
+
         var actionAsset = Resources.Load<InputActionAsset>("XRI Default Input Actions");
         if (actionAsset != null)
         {
@@ -86,6 +88,7 @@ public class TutorialManager : MonoBehaviour
             {
                 stepReady = true;
                 nextButton.interactable = true;
+                UpdateMoveStepText();
             }
         }
 
@@ -152,10 +155,14 @@ public class TutorialManager : MonoBehaviour
             ColoredLine(fadeLeft, "Gauche") + "\n" +
             ColoredLine(fadeRight, "Droite") + "\n" +
             ColoredLine(fadeForward, "Avant") + "\n" +
-            ColoredLine(fadeBackward, "Arrière") +
-            "\n\nEn alternative, tu peux aussi te déplacer rapidement :\n" +
-            "Pousse le stick droit vers l’avant pour faire apparaître la courbe bleue.\n" +
-            "Relâche le stick pour te téléporter à l’endroit du cercle.";
+            ColoredLine(fadeBackward, "Arrière");
+
+        if (stepReady || hasMoved)
+        {
+            t += "\n\nAstuce :\n" +
+                 "pousse le stick droit vers l’avant\n" +
+                 "pour te téléporter rapidement.";
+        }
 
         moveTextTMP.text = t;
     }
@@ -182,7 +189,7 @@ public class TutorialManager : MonoBehaviour
     public void StartTutorial()
     {
         tutorialStarted = true;
-        hasMoved = hasGrabbed = hasJumped = hasRotated = hasLookedBack = false;
+        hasMoved = hasJumped = hasRotated = hasLookedBack = false;
         movedLeft = movedRight = movedForward = movedBackward = false;
         fadeLeft = fadeRight = fadeForward = fadeBackward = 0f;
         jumpFade = rotateFade = lookBackFade = 0f;
@@ -225,37 +232,27 @@ public class TutorialManager : MonoBehaviour
         else if (!hasLookedBack)
         {
             hasLookedBack = true;
-            StartCoroutine(MoveInstructionImageThenGrab());
+            StartCoroutine(SecondStepGrab());
         }
     }
 
-    private IEnumerator MoveInstructionImageThenGrab()
+    private IEnumerator SecondStepGrab()
     {
         nextButton.gameObject.SetActive(false);
 
-        if (instructionImage != null)
+        StartCoroutine(FadeOut(instructionImage.gameObject, 0.8f));
+        yield return StartCoroutine(FadeOut(stepMoveText, 0.8f));
+
+        yield return new WaitForSeconds(0.2f);
+
+        yield return StartCoroutine(FadeIn(stepGrabText, 0.8f));
+
+        if (tabletTutorial != null)
         {
-            float duration = 3f;
-            float elapsed = 0f;
-            while (elapsed < duration)
-            {
-                elapsed += Time.deltaTime;
-                instructionImage.localPosition = Vector3.Lerp(imageStartPos, imageEndPos, elapsed / duration);
-                yield return null;
-            }
-            instructionImage.localPosition = imageEndPos;
+            tabletTutorial.nextButton = nextButton;
+            yield return new WaitForSeconds(1f);
+            tabletTutorial.StartTabletTutorial(stepGrabText);
         }
-
-        stepMoveText.SetActive(false);
-        stepGrabText.SetActive(true);
-    }
-
-    public void OnTabletGrabbed()
-    {
-        if (!tutorialStarted || hasGrabbed) return;
-        hasGrabbed = true;
-        stepGrabText.SetActive(false);
-        EndTutorial();
     }
 
     public void SkipTutorial()
@@ -274,5 +271,48 @@ public class TutorialManager : MonoBehaviour
 
         if (instructionImage != null)
             instructionImage.gameObject.SetActive(false);
+    }
+
+    // --- Méthode générique pour faire un fondu entrant ---
+    private IEnumerator FadeIn(GameObject target, float duration = 1f)
+    {
+        if (target == null) yield break;
+
+        CanvasGroup group = target.GetComponent<CanvasGroup>();
+        if (group == null)
+            group = target.AddComponent<CanvasGroup>();
+
+        target.SetActive(true);
+        group.alpha = 0f;
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            group.alpha = Mathf.Lerp(0f, 1f, elapsed / duration);
+            yield return null;
+        }
+        group.alpha = 1f;
+    }
+
+    // --- Méthode générique pour faire un fondu sortant ---
+    private IEnumerator FadeOut(GameObject target, float duration = 1f)
+    {
+        if (target == null) yield break;
+
+        CanvasGroup group = target.GetComponent<CanvasGroup>();
+        if (group == null)
+            group = target.AddComponent<CanvasGroup>();
+
+        float elapsed = 0f;
+        while (elapsed < duration)
+        {
+            elapsed += Time.deltaTime;
+            group.alpha = Mathf.Lerp(1f, 0f, elapsed / duration);
+            yield return null;
+        }
+
+        group.alpha = 0f;
+        target.SetActive(false);
     }
 }

@@ -26,7 +26,7 @@ public class TabletGrabDetector : MonoBehaviour
         var tutorial = FindObjectOfType<TutorialManager>();
         if (tutorial != null)
         {
-            tutorial.OnTabletGrabbed();
+            Debug.Log("Tablette attrapée !");
         }
         else
         {
