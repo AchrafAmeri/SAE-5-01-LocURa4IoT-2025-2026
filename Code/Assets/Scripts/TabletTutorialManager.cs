@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Interactables;
 
 public class TabletTutorialManager : MonoBehaviour
 {
@@ -28,9 +30,10 @@ public class TabletTutorialManager : MonoBehaviour
 
     private int currentStep = 0;
     public bool tutorialActive = false;
-    private Coroutine activeHighlight;
 
     private readonly List<GameObject> _activeFrames = new List<GameObject>();
+
+    private bool hasGrabbedTablet = false; 
 
     void Start()
     {
@@ -79,16 +82,16 @@ public class TabletTutorialManager : MonoBehaviour
         switch (currentStep)
         {
             case 0:
-                tutorialTMP.text = "<b>Voici la tablette virtuelle :</b>\nElle permet de piloter le rail et d’afficher les mesures.\n<color=#B0B0B0>(Finir le tuto avant de l'attraper)</color>";
+                tutorialTMP.text = "<b>Voici la tablette virtuelle :</b>\nElle permet de piloter le rail et dâ€™afficher les mesures.\n<color=#B0B0B0>(Finir le tuto avant de l'attraper)</color>";
                 break;
 
             case 1:
-                tutorialTMP.text = "Ces boutons déplacent le chariot sur le rail.";
+                tutorialTMP.text = "Ces boutons dÃ©placent le chariot sur le rail.";
                 HighlightGroup(moveButtonsGroup);
                 break;
 
             case 2:
-                tutorialTMP.text = "Ce bouton indique la connexion au réseau MQTT :\n   <color=#00FF00>vert = connecté</color>\n   <color=#FF0000>rouge = déconnecté</color>.";
+                tutorialTMP.text = "Ce bouton indique la connexion au rÃ©seau MQTT :\n   <color=#00FF00>vert = connectÃ©</color>\n   <color=#FF0000>rouge = dÃ©connectÃ©</color>.";
                 HighlightButton(connectionButton);
                 break;
 
@@ -98,7 +101,7 @@ public class TabletTutorialManager : MonoBehaviour
                 break;
 
             case 4:
-                tutorialTMP.text = "En cliquant dessus, tu peux choisir une position précise avec le curseur puis valider.";
+                tutorialTMP.text = "En cliquant dessus, tu peux choisir une position prÃ©cise avec le curseur puis valider.";
                 railPanel.SetActive(false);
                 setCoursePanel.SetActive(true);
                 HighlightButton(setCourseButton);
@@ -112,13 +115,15 @@ public class TabletTutorialManager : MonoBehaviour
                 break;
 
             case 6:
-                tutorialTMP.text = "Ici, tu peux choisir comment afficher les mesures : par segments ou par sphères.";
+                tutorialTMP.text = "Ici, tu peux choisir comment afficher les mesures : par segments ou par sphÃ¨res.";
                 railPanel.SetActive(false);
                 rangingPanel.SetActive(true);
                 break;
 
             case 7:
-                tutorialTMP.text = "Bravo ! Maintenant tu sais utiliser la tablette.\nTu peux l'attraper avec le grip droit ou gauche.";
+                tutorialTMP.text =
+                    "Bravo ! Maintenant tu sais utiliser la tablette.\n" +
+                    "<color=#B0B0B0>Tu peux l'attraper avec le grip droit ou gauche.</color>";
 
                 setCoursePanel.SetActive(false);
                 rangingPanel.SetActive(false);
@@ -129,18 +134,35 @@ public class TabletTutorialManager : MonoBehaviour
                 if (nextButton != null)
                 {
                     nextButton.gameObject.SetActive(true);
+                    nextButton.interactable = false;
 
                     TextMeshProUGUI btnText = nextButton.GetComponentInChildren<TextMeshProUGUI>();
                     if (btnText != null)
                         btnText.text = "Terminer";
 
                     nextButton.onClick.RemoveAllListeners();
-
                     nextButton.onClick.AddListener(EndTabletTutorial);
                 }
                 break;
         }
     }
+    public void OnGrab()
+    {
+        if (!tutorialActive || hasGrabbedTablet) return;
+        if (currentStep == 7)
+        {
+            hasGrabbedTablet = true;
+
+            tutorialTMP.text =
+                "Bravo ! Maintenant tu sais utiliser la tablette.\n" +
+                "<color=#00FF00>Tu peux l'attraper avec le grip droit ou gauche.</color>";
+
+            if (nextButton != null)
+                nextButton.interactable = true;
+
+        }
+    }
+
     private void EndTabletTutorial()
     {
         tutorialActive = false;
@@ -160,7 +182,7 @@ public class TabletTutorialManager : MonoBehaviour
             skipButton.SetActive(false);
     }
 
-    // --- Pose un cadre lumineux autour d’un bouton ---
+    // --- Pose un cadre lumineux autour dâ€™un bouton ---
     private void HighlightButton(Button btn)
     {
         if (btn == null) return;
@@ -171,7 +193,7 @@ public class TabletTutorialManager : MonoBehaviour
         StartCoroutine(PulseLines(frame));
     }
 
-    // --- Même chose pour un groupe ---
+    // --- MÃªme chose pour un groupe ---
     private void HighlightGroup(GameObject group)
     {
         if (group == null) return;
@@ -186,7 +208,7 @@ public class TabletTutorialManager : MonoBehaviour
         }
     }
 
-    // --- Crée 4 lignes lumineuses autour du bouton ---
+    // --- CrÃ©e 4 lignes lumineuses autour du bouton ---
     private GameObject CreateBorderLines(RectTransform parent)
     {
         GameObject frame = new GameObject("HL_BorderLines", typeof(RectTransform));
@@ -208,7 +230,7 @@ public class TabletTutorialManager : MonoBehaviour
         return frame;
     }
 
-    // --- Crée une ligne épaisse horizontale ou verticale ---
+    // --- CrÃ©e une ligne Ã©paisse horizontale ou verticale ---
     private void CreateLine(Transform parent, Vector2 anchorMin, Vector2 anchorMax, Color color, bool horizontal)
     {
         var line = new GameObject("Line", typeof(RectTransform), typeof(Image));
@@ -226,7 +248,7 @@ public class TabletTutorialManager : MonoBehaviour
         rt.sizeDelta = horizontal ? new Vector2(0, 4f) : new Vector2(4f, 0);
     }
 
-    // --- Fait pulser la transparence + légère variation de teinte ---
+    // --- Fait pulser la transparence + lÃ©gÃ¨re variation de teinte ---
     private IEnumerator PulseLines(GameObject frame)
     {
         if (frame == null) yield break;
