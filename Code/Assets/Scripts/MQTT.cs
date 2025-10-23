@@ -16,6 +16,10 @@ public class MQTT : MonoBehaviour
     [SerializeField] ConnexionIndicator Indicator;
     [SerializeField] GameObject connectionPanel;
     [SerializeField] GameObject keyboard;
+    public bool IsConnected => mqttClient != null && mqttClient.IsConnected;
+    public event Action Connected;
+
+
     public async Task ConnectAsync(string brokerIp = "192.168.7.13", int port = 1883, string userName = "", string password = "")
     {
         Debug.Log($"Tentative de connexion à {brokerIp}");
@@ -50,11 +54,16 @@ public class MQTT : MonoBehaviour
             mqttClient.ConnectedAsync += async e =>
             {
                 Debug.Log("MQTT connecté");
-                UnityMainThreadDispatcher.Enqueue(() => Indicator.UpdateConnectionIndicator(true));
-                UnityMainThreadDispatcher.Enqueue(() => connectionPanel.SetActive(false));
-                UnityMainThreadDispatcher.Enqueue(() => keyboard.SetActive(false));
+                UnityMainThreadDispatcher.Enqueue(() =>
+                {
+                    Indicator?.UpdateConnectionIndicator(true);
+                    connectionPanel?.SetActive(false);
+                    keyboard?.SetActive(false);
+                    Connected?.Invoke();
+                });
                 await Task.CompletedTask;
             };
+
 
             mqttClient.DisconnectedAsync += async e =>
             {
@@ -118,10 +127,16 @@ public class MQTT : MonoBehaviour
             mqttClient.ConnectedAsync += async e =>
             {
                 Debug.Log("MQTT connecté");
-                UnityMainThreadDispatcher.Enqueue(() => Indicator.UpdateConnectionIndicator(true));
-                UnityMainThreadDispatcher.Enqueue(() => connectionPanel.SetActive(false));
+                UnityMainThreadDispatcher.Enqueue(() =>
+                {
+                    Indicator?.UpdateConnectionIndicator(true);
+                    connectionPanel?.SetActive(false);
+                    keyboard?.SetActive(false);  // tu peux aussi masquer le clavier en TLS
+                    Connected?.Invoke();         // <<<<<< IMPORTANT
+                });
                 await Task.CompletedTask;
             };
+
 
             mqttClient.DisconnectedAsync += async e =>
             {
@@ -184,6 +199,29 @@ public class MQTT : MonoBehaviour
         await mqttClient.PublishAsync(Publish);
         Debug.Log($"Message : {message} envoyé au topic:{topic}");
     }
+
+    public async Task PublishAsync(string topic, string message, bool retain = false)
+    {
+        if (mqttClient == null || !mqttClient.IsConnected)
+        {
+            Debug.Log($"[MQTT] Non connecté, message ignoré");
+            return;
+        }
+
+        Debug.Log($"Publishing : {message} (retain={retain})");
+
+        var payload = Encoding.UTF8.GetBytes(message);
+
+        var publishMsg = new MqttApplicationMessageBuilder()
+            .WithTopic(topic)
+            .WithPayload(payload)
+            .WithRetainFlag(retain)   // <= clé pour retained
+            .Build();
+
+        await mqttClient.PublishAsync(publishMsg);
+        Debug.Log($"Message envoyé au topic:{topic}");
+    }
+
     private async void OnApplicationQuit()
     {
         await DisconnectAsync();

@@ -2,6 +2,9 @@ using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
 
+
+
+
 /*
  * Ce scripte à pour but de créer dynamiquement 
  * chacun des nodes dont on reçoit pour la première 
