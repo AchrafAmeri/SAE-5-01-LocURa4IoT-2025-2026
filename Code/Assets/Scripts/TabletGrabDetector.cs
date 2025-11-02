@@ -23,10 +23,10 @@ public class TabletGrabDetector : MonoBehaviour
     private void OnGrab(SelectEnterEventArgs args)
     {
         // Quand la tablette est saisie on appelle OnGrab() du tuto
-        var tutorial = FindObjectOfType<TabletTutorialManager>();
+        var tutorial = FindObjectOfType<TutorialManager>();
         if (tutorial != null)
         {
-            tutorial.OnGrab();
+            tutorial.OnTabletGrab();
         }
         else
         {
