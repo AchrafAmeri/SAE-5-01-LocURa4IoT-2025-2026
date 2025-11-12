@@ -58,7 +58,7 @@
 - [Mialisoa RAZAFINIRINA](https://github.com/Mialiso) — Développeuse  
 - [Mohammed AMERI](https://github.com/AchrafAmeri/) — Scrum Master / Développeur  
 - [Matt GUILLUY](https://github.com/MASTTTTT) — Abandon
-- [Pierre-Louis DUCRY](https://github.com/Ducry-PL) — Abandon  
+- [Pierre-Louis DUCRY](https://github.com/Ducry-PL) — ~~Abandon~~ → Résurrection
 
 
 ## A Propos du projet
