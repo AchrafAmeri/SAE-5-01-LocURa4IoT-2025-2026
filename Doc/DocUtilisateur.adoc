@@ -180,6 +180,20 @@ Le champ `timestamp` (horodatage) garantit que les commandes sont traitées dans
 
 === Optimisation de l'interaction avec les objets dans l'environnement virtuel 
 
+=== Mode Réalité Mixte
+
+==== Configuration initiale
+
+L'application porpose un bouton dédié pour basculer entre l'immersion totale en VR et le Réalité Augmentée (AR).
+
+NB : Cette fonctionnalité est encore expérimentale et peut ne pas fonctionner parfaitement. Par soucis de simplicité, le bouton est directement lors de la connexion.
+
+. Cliquez dessus avec votre contrôleur.
+. L'affichage change instantanément :
+  * **Mode AR** : Vous voyez votre pièce réelle en transparence.
+  * **Mode VR** : Vous revenez à un environnement virtuel opaque (Skybox).
+
+image::images/DU_09_button_ar_vr.png[title="Bouton : bascule Mode AR/VR dans l'interface",width=900]
 
 
 
