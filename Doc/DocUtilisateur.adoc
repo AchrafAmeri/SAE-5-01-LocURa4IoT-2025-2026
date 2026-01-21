@@ -22,13 +22,11 @@ Le projet porte sur la réalité virtuelle appliquée à l’accès à distance 
 Un modèle 3D a été développé l’année dernière par un graphiste sous **Unity**.  
 L’objectif est de faire évoluer ce modèle pour permettre l’ajout dynamique d’objets dans l’environnement.
 
-Actuellement, cela est possible uniquement en modifiant le code et en recompilant le projet.  
-L’idée est donc de **développer une API** permettant d’ajouter des objets sans recompilation.
 ****
 
 == Installation
 
-=== Prérequis
+=== Prérequis matériels et logiciels
 
 ****
 - **PC Windows 10/11** (recommandé pour Link).  
@@ -47,11 +45,7 @@ L’idée est donc de **développer une API** permettant d’ajouter des objets 
 . Installer le https://assetstore.unity.com/packages/tools/integration/meta-xr-all-in-one-sdk-269657[Meta XR All-in-One SDK].  
   *(Remplace **Oculus Integration**, désormais déprécié.)*
 
-== Configuration
-
-=== Configuration Unity
-
-==== Prérequis
+== Configuration Unity
 
 ****
 Se connecter à son **compte Unity** (gratuit).
@@ -73,30 +67,19 @@ image::images/UnityHubOpenProject.png[Ouvrir un projet Unity, width=400, align=c
 
 image::images/UnityHubProjectExemple.png[Projet Unity, width=1000, align=center]
 
-== Utilisation
+== Fonctionnalités 
 
-=== Contrôle du rail
+=== Distinction entre les différents catégori de nodes 
 
-Il est possible de piloter le rail de **sept mètres** de la plateforme en publiant des requêtes **MQTT** depuis l’application.  
-La position du chariot se met à jour en **temps réel** sur la tablette virtuelle et dans la scène 3D.
 
-=== Affichage des positions des nœuds
+=== Ajout dynamique d'objets 3D via MQTT 
 
-Les positions réelles et estimées des **nœuds** sont affichées dynamiquement :  
 
-- Nœuds **non connectés** → cubes **gris**  
-- Nœuds **connectés** → cubes **bleu clair**  
-- Positions **estimées** → cubes **rouges**
+=== Tutoriel immersif pour les débutants
 
-=== État des portes
 
-L’application récupère l’état (**ouvert/fermé**) des portes via des **capteurs**, ce qui permet de visualiser leur état en temps réel, car cela peut influencer les mesures.
+=== Optimisation de l'interaction avec les objets dans l'environnement virtuel 
 
-=== Représentation des mesures de ranging
 
-Deux types de représentations sont disponibles :
-
-. **Lignes droites** entre les nœuds et les ancres.  
-. **Sphères** dont le centre correspond à l’ancre et le rayon à la distance mesurée.
 
 
