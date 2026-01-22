@@ -179,6 +179,39 @@ Le champ `timestamp` (horodatage) garantit que les commandes sont traitées dans
 
 === Optimisation de l'interaction avec les objets dans l'environnement virtuel 
 
+=== Ergonomie et Manipulation Avancée
+
+Cette section décrit les outils mis en place pour faciliter l'utilisation prolongée du casque et la gestion de votre équipement virtuel.
+
+====  Saisie Confort (Mode Bascule)
+
+Pour éviter la fatigue musculaire au niveau des doigts lors de longues sessions de travail, le système de préhension des objets a été modifié.
+
+**Comment ça marche ?** 
+Contrairement aux jeux classiques où il faut maintenir la gâchette enfoncée pour tenir un objet, ici le système fonctionne comme un interrupteur : . Appuyez une fois sur la gâchette latérale (Grip) pour "coller" l'objet à votre main. . Vous pouvez relâcher votre doigt : l'objet reste tenu. . Appuyez une seconde fois pour lâcher l'objet.
+
+image::images/RIGHTHOLD.png[title="Illustration : L'objet reste en main sans maintenir le bouton",width=600]
+
+==== 2. Gestion intelligente de la Tablette de Contrôle
+
+La tablette est votre outil principal pour gérer les nœuds IoT. Il peut arriver que vous la posiez loin de vous **ou que vous la perdiez de vue dans l'environnement virtuel**.
+
+===== Rappel Intelligent  (Fonction "Aimant") Vous pouvez téléporter instantanément la tablette dans votre main gauche sans avoir à vous déplacer.
+
+Commande : Effectuez un double-clic rapide sur le bouton de téléportation de votre manette.
+
+Résultat : La tablette apparaît immédiatement dans votre main **gauche**, prête à être utilisée.
+
+image::images/INHAND.png[title="La tablette se téléporte dans la main gauche après un double-clic",width=600]
+
+===== Sécurité Anti-Conflit Le système est équipé d'une sécurité intelligente pour éviter les erreurs de physique :
+
+Si vous tenez déjà la tablette (dans la main gauche ou droite), la commande de rappel est désactivée.
+
+Cela empêche la tablette de "sauter" brusquement d'une main à l'autre ou de vibrer si vous appuyez sur le bouton par erreur pendant que vous l'utilisez.
+
+La fonctionnalité se réactive automatiquement dès que vous lâchez la tablette.
+
 === Mode Réalité Mixte
 
 ==== Configuration initiale
@@ -193,6 +226,7 @@ NB : Cette fonctionnalité est encore expérimentale et peut ne pas fonctionner 
   * **Mode VR** : Vous revenez à un environnement virtuel opaque (Skybox).
 
 image::images/DU_09_button_ar_vr.png[title="Bouton : bascule Mode AR/VR dans l'interface",width=900]
+
 
 
 
