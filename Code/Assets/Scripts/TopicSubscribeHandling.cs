@@ -1,9 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
+
+
 
 [Serializable]
 public class PayloadEvent : UnityEngine.Events.UnityEvent<string>{}
@@ -36,6 +39,7 @@ public class TopicSubscribeHandling : MonoBehaviour
     [SerializeField] GameObject DoorGhost;
     [SerializeField] GameObject Nodes;
     [SerializeField] Toggle TLS;
+    [SerializeField] ObjectFactory objectFactory; 
     public async Task<Task> HandleIncomingMessage(string topic, string payload)
     {
         bool findtopic = false;
@@ -56,8 +60,18 @@ public class TopicSubscribeHandling : MonoBehaviour
                await NodeGenerator.CreateNewMobileNode(topic);
             }
 
-            else if (topic.Contains("setup")){
-               await NodeGenerator.CreateNewNode(topic);
+            else if (topic.Contains("setup"))
+            {
+
+                string shape = "cube";
+
+                Match match = Regex.Match(payload, @"\""shape\""\s*:\s*\""(\w+)\""");
+
+                if (match.Success)
+                {
+                    shape = match.Groups[1].Value;
+                }
+                await NodeGenerator.CreateNewNode(topic, shape);
             }
 
             else if (topic.Contains("estimation"))
@@ -105,6 +119,17 @@ public class TopicSubscribeHandling : MonoBehaviour
                     node.GetComponent<SetNodePosition>().AddConnectionListener();
                 }
                 
+            }
+            else if (topic.Contains("furniture"))
+            {
+                if (objectFactory != null)
+                {
+                    await objectFactory.CreateOrUpdateFromPayload(topic, payload);
+                }
+                else
+                {
+                    Debug.LogWarning("ObjectFactory n'est pas assigné dans l'inspecteur !");
+                }
             }
 
             else
@@ -183,6 +208,17 @@ public class TopicSubscribeHandling : MonoBehaviour
         try
         {
             await MqttManager.SubscribeAsync("testbed/node/+/out");
+        }
+        catch (Exception e)
+        {
+            Debug.LogException(e);
+        }
+
+        try
+        {
+            // S'abonne à tout ce qui commence par furniture (ex: furniture/salon/table)
+            await MqttManager.SubscribeAsync("furniture/#");
+            Debug.Log("Abonné au topic furniture/#");
         }
         catch (Exception e)
         {
