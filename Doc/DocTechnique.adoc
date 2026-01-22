@@ -192,11 +192,11 @@ Pour permettre le Passthrough, la hiérarchie de la scène a été modifiée com
   * *Background* : Noir avec Alpha = 0 (RGBA: 0,0,0,0)
   * *Composant* : Ajout du script `AR Camera Manager`
 
-image::images/DT_03_hierarchy_ar_session_xr_origin.png[title="Hiérarchie Scène : AR Session et XR Origin",width=900]
+image::images/DT_03_hierarchy_ar_session_xr_origin.png[title="Hiérarchie Scène : AR Session et XR Origin",width=500]
 
-image::images/DT_04_main_camera_alpha0_components.png[width=900]
+image::images/DT_04_main_camera_alpha0_components.png[width=500]
 
-image::images/ARManager.png[title="Inspector Camera : Background Alpha 0 + AR Camera Manager",width=900]
+image::images/ARManager.png[title="Inspector Camera : Background Alpha 0 + AR Camera Manager",width=500]
 
 === Script de Bascule (ToggleAR)
 
@@ -252,6 +252,8 @@ public class ToggleAR : MonoBehaviour
 }
 ----
 
+
+
 == Tests et validation
 
 Des tests EditMode ont été mis en place pour valider la robustesse du script `ToggleAR` (gestion des composants nuls, assignation caméra).
@@ -283,3 +285,63 @@ Des tests EditMode ont été mis en place pour valider la robustesse du script `
         Assert.AreEqual(initialFlags, testCamera.clearFlags);
     }
 ----
+
+---
+
+## Fonctionnalités d'Interaction Avancées
+
+Cette section détaille les améliorations ergonomiques pour la manipulation des objets.
+
+### 1. Saisie Persistante (Toggle Grab)
+Pour réduire la fatigue musculaire, le mode de saisie est passé d'un maintien constant à une bascule.
+
+* **Composant** : `Near-Far Interactor` (sur les contrôleurs).
+* **Réglage** : Propriété `Select Action Trigger` modifiée de `State` vers **`Toggle`**.
+* **Effet** : Un clic pour attraper, un second clic pour lâcher.
+
+image::images/TOGGLED.png[title="Cf : Capture d'écran de l'inspector Unity avec le paramètre modifié",width=500]
+
+### 2. Rappel Intelligent (`TabletControlManager`)
+Permet de téléporter la tablette dans la main gauche via un **double-clic**, avec une gestion stricte des conflits physiques.
+
+#### Séquence de Téléportation
+Une coroutine gère le cycle pour assurer une transition fluide sans collision.
+
+```csharp
+private IEnumerator TeleportAndGrabSequence()
+{
+    yield return new WaitForEndOfFrame();
+    
+    // 1. Désactivation physique
+    tabletRigidbody.isKinematic = true;
+
+    // 2. Déplacement
+    tablet.transform.position = leftControllerTransform.TransformPoint(teleportOffset);
+    tablet.transform.rotation = leftControllerTransform.rotation;
+
+    yield return new WaitForFixedUpdate();
+
+    // 3. Force Grab via XR Interaction Manager
+    interactionManager.SelectEnter(interactor, grabInteractable);
+    
+    // 4. Réactivation physique gérée au relâchement
+}
+```
+
+#### Gestion du verrouillage (State Safety)
+Le script empêche le rappel si l'objet est déjà tenu pour éviter les bugs de physique.
+
+```csharp
+private void OnButtonPressed(InputAction.CallbackContext context)
+{
+    // Verrou : Si la tablette est déjà tenue, on ignore le clic
+    if (isBeingHeld) return;
+
+    double currentTime = Time.timeAsDouble;
+    if ((currentTime - lastClickTime) < doubleClickTimeWindow)
+    {
+        TeleportTabletToHand();
+    }
+    lastClickTime = currentTime;
+}
+
