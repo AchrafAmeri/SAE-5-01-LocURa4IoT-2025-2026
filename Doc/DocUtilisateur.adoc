@@ -109,7 +109,6 @@ Pour pouvoir ajouter un objet dans la scène, il faut publier un JSON structuré
   "rotation": {"x": 0, "y": 90, "z": 0},
   "scale": {"x": 1, "y": 1, "z": 1},
   "color": "#3357FF",
-  "shape": "cube",
   "grabbable": true
 }
 ----
@@ -226,6 +225,7 @@ NB : Cette fonctionnalité est encore expérimentale et peut ne pas fonctionner 
   * **Mode VR** : Vous revenez à un environnement virtuel opaque (Skybox).
 
 image::images/DU_09_button_ar_vr.png[title="Bouton : bascule Mode AR/VR dans l'interface",width=900]
+
 
 
 
