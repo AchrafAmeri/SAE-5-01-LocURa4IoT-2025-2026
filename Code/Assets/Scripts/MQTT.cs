@@ -77,6 +77,7 @@ public class MQTT : MonoBehaviour
         }
     }
 
+    [Obsolete]
     public async Task ConnectTLSAsync(string brokerIp = "192.168.7.13", int port = 1883, string userName = "", string password = "")
     {
         Debug.Log($"Tentative de connexion à {brokerIp}");
@@ -120,6 +121,13 @@ public class MQTT : MonoBehaviour
                 Debug.Log("MQTT connecté");
                 UnityMainThreadDispatcher.Enqueue(() => Indicator.UpdateConnectionIndicator(true));
                 UnityMainThreadDispatcher.Enqueue(() => connectionPanel.SetActive(false));
+
+                UnityMainThreadDispatcher.Enqueue(() =>
+                {
+                    FindObjectOfType<TutorialUIController>().ShowTutorial();
+                    FindObjectOfType<TutorialManager>().StartTutorial();
+                });
+
                 await Task.CompletedTask;
             };
 
@@ -183,6 +191,19 @@ public class MQTT : MonoBehaviour
             .Build();
         await mqttClient.PublishAsync(Publish);
         Debug.Log($"Message : {message} envoyé au topic:{topic}");
+    }
+    public async Task PublishAsync(string topic, string message, bool retain)
+    {
+        if (mqttClient == null || !mqttClient.IsConnected) return;
+
+        var payload = Encoding.UTF8.GetBytes(message);
+        var publishMsg = new MqttApplicationMessageBuilder()
+            .WithTopic(topic)
+            .WithPayload(payload)
+            .WithRetainFlag(retain)
+            .Build();
+
+        await mqttClient.PublishAsync(publishMsg);
     }
     private async void OnApplicationQuit()
     {

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using TMPro;
 using UnityEngine;
@@ -28,10 +29,28 @@ public class NodeGenerator : MonoBehaviour
 
     [SerializeField] MQTT MqttManager; //Le scripte MQTT.cs
     [SerializeField] TopicSubscribeHandling TopicList; //La liste des topic auquels on est abonnée définit dans TopicSubscribeHandeling.cs
+    
+    [Header("Formes des Nodes Fixes")]
+    [SerializeField] private Mesh cubeMesh;
+    [SerializeField] private Mesh sphereMesh;
+    [SerializeField] private Mesh cylinderMesh;
 
+    // Dictionnaire pour lier le texte du JSON au bon Mesh
+    private Dictionary<string, Mesh> shapeMeshes;
+
+    void Start()
+    {
+        // Initialise le dictionnaire pour faire le lien entre le texte et la forme
+        shapeMeshes = new Dictionary<string, Mesh>
+        {
+            { "cube", cubeMesh },
+            { "sphere", sphereMesh },
+            { "cylinder", cylinderMesh }
+        };
+    }
 
     //Création d'un node fixe
-    public Task CreateNewNode(string name)
+    public Task CreateNewNode(string name, string shape = "cube")
     {
         //On détermie le nom du node à partir du nom du topic, on retire donc de ce dernier le début et la fin de la chaine de catactères
         string start = "localisation/";
@@ -44,6 +63,22 @@ public class NodeGenerator : MonoBehaviour
         GameObject NewNode = Instantiate(NodePrefab); //On clone le préfab
         NewNode.transform.SetParent(gameObject.transform); //On détermine son parent
         NewNode.name = NomDuNode; //On le nome
+
+        //NOUVELLE LOGIQUE POUR CHANGER LA FORME
+        MeshFilter meshFilter = NewNode.GetComponent<MeshFilter>();
+        if (meshFilter != null)
+        {
+            string shapeKey = shape.ToLower();
+            if (shapeMeshes.ContainsKey(shapeKey))
+            {
+                meshFilter.mesh = shapeMeshes[shapeKey];
+            }
+            else
+            {
+                meshFilter.mesh = cubeMesh;
+            }
+        }
+
         NewNode.GetComponent<SetNodePosition>().SetupMQTT(TopicList, ConnectedNodeMaterial); //On initialise le scripte SetNodePosition.cs qui lui est associé qui pilote en temps réel la position du node
 
         //création de son canva pour afficher son nom
