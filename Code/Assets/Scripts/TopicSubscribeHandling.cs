@@ -1,8 +1,9 @@
 using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using UnityEngine;
 using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
 [Serializable]
@@ -56,8 +57,18 @@ public class TopicSubscribeHandling : MonoBehaviour
                await NodeGenerator.CreateNewMobileNode(topic);
             }
 
-            else if (topic.Contains("setup")){
-               await NodeGenerator.CreateNewNode(topic);
+            else if (topic.Contains("setup"))
+            {
+
+                string shape = "cube";
+
+                Match match = Regex.Match(payload, @"\""shape\""\s*:\s*\""(\w+)\""");
+
+                if (match.Success)
+                {
+                    shape = match.Groups[1].Value;
+                }
+                await NodeGenerator.CreateNewNode(topic, shape);
             }
 
             else if (topic.Contains("estimation"))
