@@ -194,6 +194,21 @@ NB : Cette fonctionnalité est encore expérimentale et peut ne pas fonctionner 
 
 image::images/DU_09_button_ar_vr.png[title="Bouton : bascule Mode AR/VR dans l'interface",width=900]
 
+== Comment faire un apk du projet ?
+
+image::images/tuto1.png[width=900]
+
+Allez dans File > Build Profiles...
+
+image::images/tuto2.png[width=900]
+
+Vérifiez que la plateforme Android est bien sélectionnée, puis cliquez sur Build.
+
+image::images/tuto3.png[width=900]
+
+Choisissez un emplacement pour sauvegarder l'apk, puis cliquez sur Save.
+
+
 
 
 
